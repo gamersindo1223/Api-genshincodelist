@@ -18,8 +18,8 @@ ${hours}:${minutes}:${seconds}`)
 })
 app.get('/api/genshin-codes', async(req,res) =>{
     var fs = require("fs");
-var text = fs.readFileSync("./tmp/codes");
-var textByLine = text.split("\n")
+var text = fs.readFileSync(path.join(__dirname + "/tmp/codes.txt"), "utf-8");
+var textByLine = text.toString().split("\n")
   res.json({creator: "Gamers_indo1223" ,scrappedweb: "https://www.eurogamer.net/genshin-impact-codes-livestream-active-working-how-to-redeem-9026", hostedin: "cyclic", activecodes: textByLine})
 })
 
