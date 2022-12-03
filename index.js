@@ -4,7 +4,7 @@ require("./scrap")
 const app = express()
 const cors = require("cors")
 const port =  3000
-const ratelimit = require("express-rate-limit")
+const rateLimit = require("express-rate-limit")
 const limiter = rateLimit({
 	windowMs: 5000, // 15 minutes
 	max: 5, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
