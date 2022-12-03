@@ -9,7 +9,7 @@ const limiter = rateLimit({
 	windowMs: 5000, // 15 minutes
 	max: 5, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
 	standardHeaders: true,
-  message: `You requested the api toomany time wait 1-5 seconds before requesting`, // Return rate limit info in the `RateLimit-*` headers
+  message: `You requested the api too many time wait 1-5 seconds before requesting`, // Return rate limit info in the `RateLimit-*` headers
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 })
 
