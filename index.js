@@ -4,6 +4,16 @@ require("./scrap")
 const app = express()
 const cors = require("cors")
 const port =  3000
+const ratelimit = require("express-rate-limit")
+const limiter = rateLimit({
+	windowMs: 5000, // 15 minutes
+	max: 5, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+	standardHeaders: true,
+  message: `You requested the api toomany time wait 1-5 seconds before requesting`, // Return rate limit info in the `RateLimit-*` headers
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+})
+
+app.use(limiter)
 app.use(cors())
 app.get('/codes-list', async(req,res) =>{
     res.sendFile(path.join(__dirname + "/tmp/codes.txt"))
