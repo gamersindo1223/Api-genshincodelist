@@ -14,7 +14,7 @@ const hours = Math.trunc(uptime / 3600).toString().padStart(2, "0");
 const minutes = Math.trunc((uptime % 3600) / 60).toString().padStart(2, "0");
 const seconds = Math.trunc(uptime % 60).toString().padStart(2, "0");
 res.send(`The program has been running for 
-${hours}:${minutes}:${seconds}`)
+${hours}:${minutes}:${seconds} \n Go to /api/genshin-codes to see the api`)
 })
 app.get('/api/genshin-codes', async(req,res) =>{
     var fs = require("fs");

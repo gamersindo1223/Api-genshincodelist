@@ -10,14 +10,14 @@ let options = {
     }
 };
 if (fs.existsSync(filepaths) === false) {
-    fs.writeFile(filepaths, "", function (err) {
-        if (err) throw new Error(err)
+   fs.writeFile(filepaths, "", async function (err) {
+        if (err) return;
         return console.log("The codes list was made")
     })
 }
 
-if (!fs.existsSync(path.join(__dirname  + './tmp'))) {
-    fs.mkdirSync(path.join(__dirname  + './tmp'));
+if (!fs.existsSync(path.join(__dirname  + '/tmp'))) {
+    fs.mkdirSync(path.join(__dirname  + '/tmp'));
 }
 async function main() {
     const result = await request(options);
