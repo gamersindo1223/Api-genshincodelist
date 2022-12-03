@@ -16,8 +16,8 @@ if (fs.existsSync(filepaths) === false) {
     })
 }
 
-if (!fs.existsSync('./tmp')) {
-    fs.mkdirSync("./tmp");
+if (!fs.existsSync(path.join(__dirname  + './tmp'))) {
+    fs.mkdirSync(path.join(__dirname  + './tmp'));
 }
 async function main() {
     const result = await request(options);
