@@ -39,7 +39,5 @@ async function main() {
 
     });
 }
-setInterval(() => {
     main();
-}, 15000);
 module.exports = main
