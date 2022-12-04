@@ -41,4 +41,5 @@ async function main() {
 }
 setInterval(() => {
     main();
-}, 30000);
+}, 15000);
+module.exports = main
