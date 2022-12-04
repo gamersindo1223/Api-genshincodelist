@@ -4,6 +4,7 @@ require("./scrap")
 const app = express()
 const cors = require("cors")
 const port = 3000
+const fs = require("fs")
 const rateLimit = require("express-rate-limit")
 const limiter = rateLimit({
   windowMs: 3000, // 15 minutes
@@ -27,15 +28,18 @@ app.get('/', (req, res) => {
 ${hours}:${minutes}:${seconds} \n Go to /api/genshin-codes to see the api`)
 })
 app.get('/api/genshin-codes', async (req, res) => {
-  var fs = require("fs");
-  const data = fs.readFileSync(path.join(__dirname + '/tmp/codes.txt'), "utf-8")
-  const rawLines = data.toString().split(/\r?\n/)
-  const object = rawLines.reduce((parsed, currentLine, index) => {
-    if (((index + 1) % 2) !== 0) return parsed
-    return { ...parsed, [rawLines[index - 1]]: currentLine }
-  }, {})
-  // I stole this from stack overflow
-  res.json({ activecodes: object, creator: "Gamers_indo1223", scrappedweb: "https://www.eurogamer.net/genshin-impact-codes-livestream-active-working-how-to-redeem-9026", hostedin: "cyclic", })
+  var text = fs.readFileSync(path.join(__dirname + "/tmp/codes.txt"), "utf-8");
+  var textByLine = text.toString().split("\n").filter(element => {return element !== '';})
+  const formattedcodes = []
+  for(let i = 0; i < textByLine.length; i += 2){
+      formattedcodes.push(textByLine[i] + "_" + textByLine[i+1])
+  }
+  res.json({ 
+  activecodes: formattedcodes, 
+  creator: "Gamers_indo1223", 
+  scrappedweb: "https://www.eurogamer.net/genshin-impact-codes-livestream-active-working-how-to-redeem-9026", 
+  hostedin: "cyclic", 
+  })
 })
 
 app.listen(port, "127.0.0.1", () => {
