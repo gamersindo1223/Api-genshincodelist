@@ -19,7 +19,7 @@ app.use(cors())
 app.get('/codes-list', async (req, res) => {
   res.sendFile(path.join(__dirname + "/tmp/codes.txt"))
 })
-app.get('/update', async (req, res) => {
+app.get('/api/update', async (req, res) => {
   const main = require("./scrap")
   main()
   res.send("updated")
