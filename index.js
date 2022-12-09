@@ -7,26 +7,25 @@ const port = process.env.PORT || 3000
 const rateLimit = require("express-rate-limit")
 const Api = require("./Api")
 const limiter = rateLimit({
-  windowMs: 3000, 
-  max: 3, 
+  windowMs: 3000,
+  max: 3,
   standardHeaders: true,
-  message: {messge: `You requested too many time wait 3 seconds before requesting again`}, 
-  legacyHeaders: false, 
+  message: { messge: `You requested too many time wait 3 seconds before requesting again` },
+  legacyHeaders: false,
 })
 
 app.use(limiter)
 app.use(cors())
-app.get("/", async(req, res) => {
-    res.send('okay')
- })
+app.get("/", async (req, res) => {
+  res.send('okay')
+})
 app.get("/code", Api.genshin)
-app.get("*", async(req, res) => {
-   res.status(404).sendFile(path.join(__dirname + "/public/404.html"))
+app.get("*", async (req, res) => {
+  res.status(404).sendFile(path.join(__dirname + "/public/404.html"))
 })
 
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}!`)
-    console.log("Press Ctrl+C to quit.")
+  console.log(`Example app listening on port ${port}!`)
+  console.log("Press Ctrl+C to quit.")
 })
-//require('./s3-file')
