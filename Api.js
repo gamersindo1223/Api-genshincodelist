@@ -30,7 +30,7 @@ exports.genshin = async function (req, res) {
 
                         return res;
                     }, []);
-                    res.send({
+                    res.json({
                         data: {
                             code: codelist,
                             developer: "Gamersindo1223",
@@ -43,7 +43,7 @@ exports.genshin = async function (req, res) {
                     })
                     break;
                 case "pocketactics":
-                    res.send({
+                    res.json({
                         data: {
                             code: data,
                             developer: "Gamersindo1223",

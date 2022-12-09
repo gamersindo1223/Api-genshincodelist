@@ -17,11 +17,11 @@ const limiter = rateLimit({
 app.use(limiter)
 app.use(cors())
 app.get("/", async (req, res) => {
-  res.send('okay')
+  res.send({message: "Please refer to the docs", docs: "docs.genshincodes.is-an.app"})
 })
 app.get("/code", Api.genshin)
 app.get("*", async (req, res) => {
-  res.status(404).sendFile(path.join(__dirname + "/public/404.html"))
+  res.status(404).json({message: '404 Not found'})
 })
 
 
