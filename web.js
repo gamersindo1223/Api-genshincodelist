@@ -21,7 +21,6 @@ async function main() {
             
             return res;
         }, []);
-        console.log(codelist)
     });
 }
 main();
