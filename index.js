@@ -17,7 +17,11 @@ const limiter = rateLimit({
 app.use(limiter)
 app.use(cors())
 app.get("/", async (req, res) => {
+<<<<<<< HEAD
   res.send({ message: "Please refer to the docs", docs: "genshincodeslist.is-an.app/docs" })
+=======
+  res.send({message: "Please refer to the docs", docs: "genshincodeslist.is-an.app/docs"})
+>>>>>>> ebdf1a8e3ab7da1e21e1ee5085ef12c66ac873ed
 })
 app.get("/code", Api.genshin)
 app.get("*", async (req, res) => {
