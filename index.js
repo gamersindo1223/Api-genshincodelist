@@ -55,7 +55,7 @@ app.post("/update", async (req, res) => {
         Find: "Web",
       });
       await data.save();
-      return res.status(300).end();
+      return res.status(300).send("Updated as per now!");
     }
   });
 });
